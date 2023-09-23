@@ -16,7 +16,7 @@ import ReactSelect from "react-select";
 export default function Home() {
   const { notes, allTags, deleteTag, updateTag } = useNote();
 
-  const [title, setTitle] = useState("");
+  const [filter, setFilter] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [show, setShow] = useState(false);
 
@@ -24,13 +24,13 @@ export default function Home() {
     () =>
       notes.filter(
         (note) =>
-          title === "" ||
-          (note.title.toLowerCase().includes(title.toLowerCase()) &&
+          filter === "" ||
+          (note.title.toLowerCase().includes(filter.toLowerCase()) &&
             selectedTags.length === 0) ||
           selectedTags.every((tag) => note.tags.includes(tag))
       ),
 
-    [notes, title, selectedTags]
+    [notes, filter, selectedTags]
   );
 
   return (
@@ -57,8 +57,8 @@ export default function Home() {
               <Form.Label>Title</Form.Label>
               <Form.Control
                 type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={filter}
+                onChange={(e) => setFilter(e.target.value)}
               />
             </Form.Group>
           </Col>
