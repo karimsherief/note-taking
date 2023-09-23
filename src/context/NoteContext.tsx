@@ -18,7 +18,7 @@ export type NotesProps = {
 type NotesContextProps = {
   notes: NotesProps[];
   getNote: (id: string) => NotesProps;
-  addNote: ({ title, tags, body }: NotesProps) => void;
+  addNote: (title: string, tags: string[], body: string) => void;
   deleteNote: (id: string) => void;
   updateNote: (newNote: NotesProps) => void;
   allTags: TagsProps[];
@@ -32,7 +32,7 @@ export default function NoteProvider({ children }: { children: ReactNode }) {
   const [notes, setNotes] = useLocalStorage<NotesProps[]>("notes", []);
   const [allTags, setAllTags] = useLocalStorage<TagsProps[]>("tags", []);
 
-  function addNote({ title, tags, body }: NotesProps) {
+  function addNote(title: string, tags: string[], body: string) {
     setNotes((prev) => [
       ...prev,
       {
