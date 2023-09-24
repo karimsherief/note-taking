@@ -50,7 +50,11 @@ export default function NoteProvider({ children }: { children: ReactNode }) {
   }
 
   function getNote(id: string) {
-    return notes.find((note) => note.id === id)!;
+    const note = notes.find((note) => note.id === id);
+    if (note == null) {
+      throw Error("ID not found");
+    }
+    return note;
   }
   function updateNote(newNote: NotesProps) {
     setNotes((prev) =>
