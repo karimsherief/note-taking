@@ -18,7 +18,8 @@ const router = createBrowserRouter(
       </Route>
       <Route path="*" element={<Navigate to="/" />} />
     </Route>
-  )
+  ),
+  { basename: import.meta.env.DEV ? "/" : "/note-taking/" }
 );
 
 export default function App() {
