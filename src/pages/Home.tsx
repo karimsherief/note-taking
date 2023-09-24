@@ -24,10 +24,10 @@ export default function Home() {
     () =>
       notes.filter(
         (note) =>
-          filter === "" ||
-          (note.title.toLowerCase().includes(filter.toLowerCase()) &&
-            selectedTags.length === 0) ||
-          selectedTags.every((tag) => note.tags.includes(tag))
+          (filter === "" ||
+            note.title.toLowerCase().includes(filter.toLowerCase())) &&
+          (selectedTags.length === 0 ||
+            selectedTags.every((tag) => note.tags.includes(tag)))
       ),
 
     [notes, filter, selectedTags]

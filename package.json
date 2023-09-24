@@ -17,8 +17,7 @@
     "react-markdown": "^8.0.7",
     "react-router-dom": "^6.16.0",
     "react-select": "^5.7.4",
-    "rehype-highlight": "^7.0.0",
-    "remark-gfm": "^4.0.0",
+    "remark-gfm": "^3.0.1",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

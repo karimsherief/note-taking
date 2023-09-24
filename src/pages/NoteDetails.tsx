@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Badge, Button, Col, Container, Row, Stack } from "react-bootstrap";
 import useNote from "../hooks/useNote";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export default function NoteDetails() {
   const { id } = useParams() as { id: string };
@@ -41,7 +42,7 @@ export default function NoteDetails() {
           </Stack>
         </Col>
       </Row>
-      <ReactMarkdown children={note.body} />
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>{note.body}</ReactMarkdown>
     </Container>
   );
 }
